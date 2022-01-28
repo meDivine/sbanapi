@@ -58,18 +58,15 @@ class Auth
             return [
                 'auth' => true,
                 'message' => 'Успешная авторизация',
-                'token' => $apiToken->getToken($checkPass['user_id'])
+                'token' => $apiToken->getToken($checkPass['user_id'])->token
             ];
         }
         else
             return $checkPass;
     }
 
-    /**
-     *
-     * @return array
-     */
-    public function auth():array {
-        return $this->getToken();
+
+    public function auth() {
+        return response()->json($this->getToken());
     }
 }

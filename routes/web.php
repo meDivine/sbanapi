@@ -28,4 +28,4 @@ $router->get('/post', ['middleware' => 'auth', function (Request $request) {
     //
 }]);
 
-$router->post('/auth/', 'AuthController@index');
+$router->post('/auth', 'AuthController@index');

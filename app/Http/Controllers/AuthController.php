@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Classes\Auth;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
     public function index(Request $request) {
-        $auth = new Auth($request->post('email'), $request->post('password'));
+        $auth = new Auth($request->input('email'), $request->input('password'));
         return $auth->auth();
     }
 }

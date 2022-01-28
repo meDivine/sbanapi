@@ -13,9 +13,9 @@ class ApiKeys extends Model
      * @return Model|\Illuminate\Database\Query\Builder|object|null
      */
     public function getToken($id) {
-        return DB::table('api')
+        return DB::table('api_keys')
             ->where('user_id', $id)
-            ->select('api_keys.token')
+            ->select('token')
             ->first();
     }
 }
