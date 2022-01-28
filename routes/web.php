@@ -13,6 +13,7 @@
 |
 */
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,9 +21,11 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/post/', ['middleware' => 'auth', function (Request $request) {
+$router->get('/post', ['middleware' => 'auth', function (Request $request) {
 
    return Auth::user()->name;
 
     //
 }]);
+
+$router->post('/auth/', 'AuthController@index');
