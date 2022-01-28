@@ -62,7 +62,11 @@ class Auth
             ];
         }
         else
-            return $checkPass;
+            return [
+                'auth' => true,
+                'message' => 'Успешная авторизация',
+                'token' => null
+            ];
     }
 
 
