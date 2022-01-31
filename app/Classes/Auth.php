@@ -63,7 +63,7 @@ class Auth
         }
         else
             return [
-                'auth' => true,
+                'auth' => false,
                 'message' => 'Успешная авторизация',
                 'token' => null
             ];
