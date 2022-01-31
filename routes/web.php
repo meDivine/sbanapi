@@ -21,11 +21,8 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('/post', ['middleware' => 'auth', function (Request $request) {
-
-   return Auth::user()->name;
-
-    //
+$router->post('/profile', ['middleware' => 'auth', function (Request $request) {
+   return response()->json(Auth::user());
 }]);
 
 $router->post('/auth', 'AuthController@index');

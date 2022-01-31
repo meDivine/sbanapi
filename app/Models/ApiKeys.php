@@ -18,4 +18,12 @@ class ApiKeys extends Model
             ->select('token')
             ->first();
     }
+
+    public function getUserByToken($token) {
+        return DB::table('api_keys')
+            ->where('token', $token)
+            ->join('users', 'api_keys.user_id', '=', 'users.id')
+            ->select('users.id','users.name', 'users.email', 'users.balance', 'users.tariff_end')
+            ->first();
+    }
 }

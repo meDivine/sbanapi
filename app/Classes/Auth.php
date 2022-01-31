@@ -34,13 +34,15 @@ class Auth
             return [
                 'auth' => true,
                 'message' => 'Успешная авторизация',
-                'user_id' => $resultCheck
+                'user_id' => $resultCheck,
+                'status' => 200
             ];
         else {
             return [
                 'auth' => false,
                 'message' => 'Логин или пароль не верен',
-                'user_id' => null
+                'user_id' => null,
+                'status' => 401
             ];
         }
     }
@@ -58,19 +60,22 @@ class Auth
             return [
                 'auth' => true,
                 'message' => 'Успешная авторизация',
-                'token' => $apiToken->getToken($checkPass['user_id'])->token
+                'token' => $apiToken->getToken($checkPass['user_id'])->token,
+                'status' => 200
             ];
         }
         else
             return [
                 'auth' => false,
-                'message' => 'Успешная авторизация',
-                'token' => null
+                'message' => 'Неуспешная авторизация',
+                'token' => null,
+                'status' => 401
             ];
     }
 
 
     public function auth() {
-        return response()->json($this->getToken());
+        $authInfo = $this->getToken();
+        return response()->json($authInfo, $authInfo['status']);
     }
 }
