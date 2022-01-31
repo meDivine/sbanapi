@@ -24,7 +24,7 @@ $router->get('/', function () use ($router) {
 });
 
 $router->get('/profile', ['middleware' => 'auth', function (Request $request) {
-    Log::info($request);
+    Log::debug($request);
    return response()->json(Auth::user());
 }]);
 

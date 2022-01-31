@@ -41,7 +41,7 @@ class AuthServiceProvider extends ServiceProvider
                     ->select('users.name', 'users.email', 'users.balance', 'users.tariff', 'users.tariff_end', 'users.email',
                         'users.created_at', 'users.updated_at', 'api_keys.token', 'api_keys.expiry_date')
                     ->first();
-                Log::info($get);
+                Log::debug($get);
                 return $get;
             }
         });
