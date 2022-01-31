@@ -17,14 +17,14 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
 $router->get('/profile', ['middleware' => 'auth', function (Request $request) {
-
-    dd($request);
+    Log::info($request);
    return response()->json(Auth::user());
 }]);
 
