@@ -23,6 +23,8 @@ $router->get('/', function () use ($router) {
 });
 
 $router->get('/profile', ['middleware' => 'auth', function (Request $request) {
+
+    dd($request);
    return response()->json(Auth::user());
 }]);
 
