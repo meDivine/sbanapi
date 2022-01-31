@@ -21,7 +21,7 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->post('/profile', ['middleware' => 'auth', function (Request $request) {
+$router->get('/profile', ['middleware' => 'auth', function (Request $request) {
    return response()->json(Auth::user());
 }]);
 
