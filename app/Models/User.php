@@ -22,7 +22,17 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email',
+        'name',
+        'email',
+        'password',
+        'permissions',
+        'tariff',
+        'balance',
+        'tariff_end'
+    ];
+
+    protected $guarded = [
+        'password'
     ];
 
     /**
@@ -52,6 +62,9 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
         else {
             return null;
         }
+    }
+    public function Api():HasOne {
+        return self::hasOne(ApiKey::class);
     }
 
 }

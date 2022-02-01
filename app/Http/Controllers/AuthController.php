@@ -20,11 +20,6 @@ class AuthController extends Controller
     }
 
     public function test(Request $request) {
-        return DB::table('api_keys')
-            ->where('token', $request->header('api_token'))
-            ->join('users', 'api_keys.user_id', '=', 'users.id')
-            ->select('users.name', 'users.email', 'users.balance', 'users.tariff', 'users.tariff_end', 'users.email',
-                'users.created_at', 'users.updated_at', 'api_keys.token', 'api_keys.expiry_date')
-            ->get();
+        return ApiKeys::where('token', $request->header('api_token'))->first()->user;
     }
 }
