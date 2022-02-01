@@ -17,6 +17,7 @@ use App\Http\Controllers\AuthController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 $router->get('/', function () use ($router) {
@@ -24,7 +25,6 @@ $router->get('/', function () use ($router) {
 });
 
 $router->get('/profile', ['middleware' => 'auth', function (Request $request) {
-    Log::debug($request);
    return response()->json(Auth::user());
 }]);
 
@@ -33,3 +33,5 @@ $router->post('/auth', 'AuthController@index');
 $router->get('/cache', function () {
    return Cache::flush();
 });
+
+$router->get('/user',  'AuthController@test');
